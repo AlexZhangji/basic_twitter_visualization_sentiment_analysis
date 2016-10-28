@@ -16,8 +16,6 @@ This is done by:
 
 ### Libraries
 
-Word Cloud Universal uses a number of open source projects to work properly:
-
 * [sentiment] -AFINN-based sentiment analysis for Node.js.
 * [d3-cloud] -Create word clouds in JavaScript.
 
