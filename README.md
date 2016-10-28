@@ -1,53 +1,34 @@
-# Itp404-final-project-ember
+# Reddit Data Visualization/Analysis
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+This is the final project for ITP 404 class.  (work in progress)
 
-## Prerequisites
+###About
+  - Given a sub reddit name and a certain word .
+  - Output a word cloud visualization and 
+<br>
 
-You will need the following things properly installed on your computer.
+This is done by:
 
-* [Git](http://git-scm.com/)
-* [Node.js](http://nodejs.org/) (with NPM)
-* [Bower](http://bower.io/)
-* [Ember CLI](http://ember-cli.com/)
-* [PhantomJS](http://phantomjs.org/)
+ 1. Using Reddit API to get data for given subReddit.
+ 2. Extract info when it contains given word in the sub.
+ 3. Integrate word cloud and emotion analysis with external libraries.
 
-## Installation
 
-* `git clone <repository-url>` this repository
-* `cd itp404-final-project-ember`
-* `npm install`
-* `bower install`
+### Libraries
 
-## Running / Development
+Word Cloud Universal uses a number of open source projects to work properly:
 
-* `ember serve`
-* Visit your app at [http://localhost:4200](http://localhost:4200).
+* [sentiment] -AFINN-based sentiment analysis for Node.js.
+* [d3-cloud] -Create word clouds in JavaScript.
 
-### Code Generators
 
-Make use of the many generators for code, try `ember help generate` for more details
 
-### Running Tests
+License
+----
 
-* `ember test`
-* `ember test --server`
+MIT
 
-### Building
+[//]: # (These are reference links used in the body of this note and get stripped out when the markdown processor does its job. There is no need to format nicely because it shouldn't be seen. Thanks SO - http://stackoverflow.com/questions/4823468/store-comments-in-markdown-syntax)
 
-* `ember build` (development)
-* `ember build --environment production` (production)
-
-### Deploying
-
-Specify what it takes to deploy your app.
-
-## Further Reading / Useful Links
-
-* [ember.js](http://emberjs.com/)
-* [ember-cli](http://ember-cli.com/)
-* Development Browser Extensions
-  * [ember inspector for chrome](https://chrome.google.com/webstore/detail/ember-inspector/bmdblncegkenkacieihfhpjfppoconhi)
-  * [ember inspector for firefox](https://addons.mozilla.org/en-US/firefox/addon/ember-inspector/)
-
+   [sentiment]: <https://github.com/thisandagain/sentiment>
+   [d3-cloud]: <https://github.com/jasondavies/d3-cloud>
