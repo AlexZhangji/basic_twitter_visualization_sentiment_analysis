@@ -4,7 +4,7 @@ This is the final project for ITP 404 class.  (work in progress)
 
 ###About
   - Given a sub reddit name and a certain word .
-  - Output a word cloud visualization and 
+  - Output a basic word cloud visualization and emotion analysis. 
 <br>
 
 This is done by:
@@ -16,8 +16,8 @@ This is done by:
 
 ### Libraries
 
-* [sentiment] -AFINN-based sentiment analysis for Node.js.
-* [d3-cloud] -Create word clouds in JavaScript.
+* [sentiment] - AFINN-based sentiment analysis for Node.js.
+* [d3-cloud]  - Create word clouds in JavaScript.
 
 
 
