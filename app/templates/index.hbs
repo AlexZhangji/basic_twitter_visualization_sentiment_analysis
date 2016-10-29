@@ -1,0 +1,41 @@
+{{outlet}}
+<ul class="header card-shadow">
+  {{#link-to "index" }}
+    <li>Home</li>
+  {{/link-to}}
+
+  {{#link-to "contact" }}
+    <li>Contact</li>
+  {{/link-to}}
+
+  {{#link-to "about" }}
+    <li>About</li>
+  {{/link-to}}
+</ul>
+<br style="clear:both;" />
+
+<div class="container">
+  <h1>this is index page</h1>
+
+  <div class="card-shadow sub-container">
+    <div class="card-title">Give a subReddit name:</div>
+    <input type="text" />
+  </div>
+
+
+  <div class="card-shadow sub-container">
+    <span class="card-title">Search a word and its variations in subReddit:</span><br />
+    <input type="text" />
+  </div>
+
+  <div class="card-shadow sub-container"  style="background-color:white; ">
+    <div class="card-title">Sample result for word cloud:</div>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/V_wordcloud_skill.png/730px-V_wordcloud_skill.png" />
+  </div>
+
+  <div class="card-shadow sub-container" style="background-color:white;">
+    <div class="card-title">Sample result for sentiment analysis:</div>
+    <img src="http://i.stack.imgur.com/umKkc.png" />
+  </div>
+
+</div>

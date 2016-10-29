@@ -1,0 +1,56 @@
+{{outlet}}
+<ul class="header card-shadow">
+  {{#link-to "index" }}
+  <li>Home</li>
+  {{/link-to}}
+
+  {{#link-to "contact" }}
+  <li>Contact</li>
+  {{/link-to}}
+
+  {{#link-to "about" }}
+  <li>About</li>
+  {{/link-to}}
+</ul>
+<br style="clear:both;"/>
+
+
+<h1>
+  This is the final project for ITP 404 class. (work in progress)
+</h1>
+
+<h2>About</h2>
+<div>
+  <li>
+    Given a sub reddit name and a certain word .
+  </li>
+  <li>
+    Output a basic word cloud visualization and emotion analysis.
+  </li>
+
+</div>
+
+<h2>This is done by:</h2>
+<div>
+    <li>
+      Using Reddit API to get data for given subReddit.
+    </li>
+    <li>
+      Extract info when it contains given word in the sub.
+    </li>
+    <li>
+      Integrate word cloud and emotion analysis with external libraries.
+    </li>
+</div>
+
+<h2>Libraries</h2>
+
+<div>
+  <li>
+    sentiment - AFINN-based sentiment analysis for Node.js.
+  </li>
+
+  <li>
+    d3-cloud - Create word clouds in JavaScript.
+  </li>
+</div>
