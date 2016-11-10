@@ -1,10 +1,11 @@
 var express = require('express');
 var Twitter = require('twitter');
+var cors = require('cors');
 
 
 
 var app = express();
-
+app.use(cors());
 
 var client = new Twitter({
   consumer_key: 'KIauG32B5KnWe5hGm17dgzcrd',
@@ -29,7 +30,7 @@ app.get('/api/twitter/:key', function(request, respond) {
   // get the key term from api call
   var params = {
     q: request.params.key,
-    count: 1000
+    count: 200
   };
 
   client.get('search/tweets', params, function(error, tweets, response) {

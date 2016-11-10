@@ -15,6 +15,7 @@ function cleanTextArr(line) {
 // get word counter, result like [['word1': 3], ['word2': 2] ].
 function getWordCounter(inList) {
   // var wordList = [];
+  console.log('counter get called');
   var wordCounter = {};
 
   for (var i = 0; i < inList.length; i++) {
