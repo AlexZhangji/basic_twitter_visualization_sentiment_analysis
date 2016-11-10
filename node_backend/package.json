@@ -1,0 +1,15 @@
+{
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "cors": "^2.8.1",
+    "dotenv": "^2.0.0",
+    "express": "^4.13.3",
+    "mysql": "^2.11.1",
+    "q": "^1.4.1",
+    "sequelize": "^3.9.0",
+    "validatorjs": "^3.7.0"
+  },
+  "engines": {
+    "node": "6.6.0"
+  }
+}

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Test</title>
+    <script src="wordcloud2.js"></script>
+
+</head>
+
+<body>
+    <div id="my_canvas" style="width:300px; height:300px;">
+
+    </div>
+
+    <script>
+        /*
+                            return text with:
+                              only characters
+                              lowercase
+                              get rid of stopwords.
+                            */
+        function cleanTextArr(list) {
+            var res = list.toLowerCase().match(/[a-z]/).split('');
+            console.log(res);
+            return res;
+        }
+
+        // get word counter, result like [['word1': 3], ['word2': 2] ].
+        function getWordCounter(inList) {
+            // var wordList = [];
+            var wordCounter = {};
+
+            for (var i = 0; i < inList.length; i++) {
+                var cleanSentense = cleanTextArr(inList[i]);
+                for (var j = 0; j < cleanSentense.length; j++) {
+                    var curWord = cleanSentense[j];
+                    if (curWord in wordCounter) {
+                        wordCounter[curWord] += 1;
+                    } else {
+                        wordCounter[curWord] = 1;
+                    }
+                }
+            }
+
+            return wordCounter;
+        }
+
+        var list = [
+            "LeEco’s US chief says no layoffs as self driving car plan a ‘high priority’ https://t.co/V2V4qXIqph by @SCMP_News https://t.co/Bf8xq4BYSU",
+            "China's first driverless cars go for trial run in Wuzhen https://t.co/zA0x7PfAtH by @ChinaDailyAsia https://t.co/stYudjBjZh",
+            "Alibaba expected to rake in record $20 billion in Singles' Day sales this Friday https://t.co/NtGj0BmnUY by… https://t.co/MfjpiU0q7Y",
+            "LeEco’s value drops by nearly $2 billion on reports of cash shortage https://t.co/Dp8uWSHXge by @ChinaGeeks https://t.co/su4y4QWE6z",
+            "China’s Patent-Lawsuit Profile Grows https://t.co/WN1bPHjiw4 by @JuroOsawa https://t.co/iF8KzdMFck",
+            "Alibaba starts working for 'double 11' (Singles Day) https://t.co/k7jaD4tf4o by @ChinaDailyAsia https://t.co/hqGIlAchaR",
+            "Baidu bets it's got upper hand in self-driving race https://t.co/AkAso2J9R0 by @ChinaDailyAsia https://t.co/2n6QwpN63P",
+            "China ends anonymity on its internet https://t.co/N9YoGFPSVM by @ChinaGeeks https://t.co/f5sOaRUMUt",
+            "RT @XHNews: Chinese doctors successfully replaced a section of a cancer patient's forehead with a 3D-printed part (File photo）https://t.co/…",
+            "Alibaba’s Trojan Horse for Southeast Asia https://t.co/MxA23JYS7e by @sheji_acommerce https://t.co/zyxujmuTKM",
+            "China’s New Cybersecurity Law Rattles Foreign Tech Firms https://t.co/KCIdUIbzjj by @joshchin and @evadou https://t.co/4DTiliLXck",
+            "Chinese consumer sues Samsung after Note 7 catches fire https://t.co/hz475c6lid by @ChinaDailyAsia https://t.co/RlCLew6tnk",
+            "Sinovation Ventures’ Dr. Kai-Fu Lee is betting big on artificial intelligence https://t.co/L2sHambcxM by… https://t.co/53NpkfB1Nn",
+            "Chinese Tech Firm LeEco Faces Cash Crunch https://t.co/kMbhS12sah @WSJ https://t.co/4jJeIClrYm",
+            "RT @technodechina: #WeChat #Censorship Provokes Doubts On Integrity From Disgruntled Editor https://t.co/A4ffFA2RZx #China https://t.co/PyG…",
+            "RT @GameAddict: NetEase On Track For Solid Third-Quarter Earnings Growth | https://t.co/OdMo4wuedN https://t.co/M9fi3itmcw",
+            "A Namibian in Wuhan Finds Fame on China’s Internet https://t.co/TxbTu3z28H by @ChinaRealTime https://t.co/n5s2zWTTk9",
+            "PC Giant Lenovo in Major Management Reshuffle https://t.co/WqkiDycSQb by @caixin https://t.co/YFDZPJPVHJ",
+            "Bike-sharing is a growth vehicle in China https://t.co/lWcMHSbMm1 by @ChinaDailyAsia https://t.co/hvr5mwzRc2",
+            "China Tightens Rules Covering News Broadcasts on Live Streaming Sites https://t.co/G4s9ifMb19 by @caixin https://t.co/3YgXsaITBt"
+        ];
+
+        list = getWordCounter(list);
+        WordCloud(document.getElementById('my_canvas'), {
+            list: list
+        });
+    </script>
+</body>
+
+</html>
