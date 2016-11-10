@@ -33,7 +33,6 @@
       }).then(function(rawWordList) {
         console.log(rawWordList);
         counterList = getWordCounter(rawWordList.tweets);
-        // var newList = [['nihao',3],['nimei', 10], ['zhazha',2]];
         WordCloud(document.getElementById('my_canvas'), {
           list: counterList
         });

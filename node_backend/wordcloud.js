@@ -25,7 +25,7 @@ function parseTweets(tweets) {
   });
   return tweetArr;
 }
-
+  
 app.get('/api/twitter/:key', function(request, respond) {
   // get the key term from api call
   var params = {
