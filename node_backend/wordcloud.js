@@ -48,23 +48,32 @@ app.get('/api/twitter/:key', function(request, respond) {
   // get the key term from api call
   var params = {
     q: request.params.key,
-    count: 200
+    count: 100
   };
 
   client.get('search/tweets', params, function(error, tweets, response) {
     if (!error) {
-      tweets = parseTweets(tweets);
+      var cleanTweetsArr = parseTweets(tweets);
+      var sentiArr = getSentimentArr(cleanTweetsArr);
 
-      // get sentiment values
-      var sentiArr = getSentimentArr(tweets);
+      // update max id to avoid overlap
+      params.max_id = parseInt(tweets.statuses[ tweets.statuses.length - 1 ].id_str) - 1;
 
-      respond.json({
-        tweets, sentiArr
+      client.get('search/tweets', params, function(error, tweets, response) {
+        if(!error){
+           var curTweetArr = parseTweets(tweets);
+           cleanTweetsArr = cleanTweetsArr.concat(curTweetArr);
+           sentiArr = sentiArr.concat(getSentimentArr(curTweetArr));
+           respond.json({
+             cleanTweetsArr, sentiArr
+           });
+        }
       });
     } else {
       console.log('error');
     }
   });
+  // end of client get
 });
 
 
