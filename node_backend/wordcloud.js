@@ -1,5 +1,7 @@
 var express = require('express');
 var Twitter = require('twitter');
+var sentiment = require('sentiment');
+
 var cors = require('cors');
 
 
@@ -25,7 +27,23 @@ function parseTweets(tweets) {
   });
   return tweetArr;
 }
-  
+
+function getSentimentArr(tweetArr){
+  var sentiArr = [];
+
+  tweetArr.map(function(tweet){
+    var curSenti = sentiment(tweet);
+    var tweetSenti = {
+      score: curSenti.score,
+      comparative: curSenti.comparative
+    };
+
+    sentiArr.push(tweetSenti);
+  });
+
+  return sentiArr;
+}
+
 app.get('/api/twitter/:key', function(request, respond) {
   // get the key term from api call
   var params = {
@@ -36,8 +54,12 @@ app.get('/api/twitter/:key', function(request, respond) {
   client.get('search/tweets', params, function(error, tweets, response) {
     if (!error) {
       tweets = parseTweets(tweets);
+
+      // get sentiment values
+      var sentiArr = getSentimentArr(tweets);
+
       respond.json({
-        tweets
+        tweets, sentiArr
       });
     } else {
       console.log('error');
