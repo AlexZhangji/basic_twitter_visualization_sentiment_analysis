@@ -7,6 +7,10 @@
   <script src="wordcloud2.js"></script>
   <script src="cleanText.js"></script>
   <script src='https://code.jquery.com/jquery-3.1.1.js'></script>
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <script src="https://code.highcharts.com/highcharts-more.js"></script>
+  <script src="https://code.highcharts.com/modules/exporting.js"></script>
+
 </head>
 
 <body>
@@ -17,11 +21,12 @@
     </button>
     <input id="input-search" />
 
-    <div id="my_canvas" class="card-shadow" style="width:300px; height:300px; margin-top:20px;">
-    </div>
+    <div id="my_canvas" class="card-shadow" style="width:300px; height:300px; margin-top:20px;"></div>
+    <div id="spider_web" class="card-shadow" style="width:300px; height:300px; margin-top:20px;"></div>
 
   </div>
   <!-- end of container -->
+  <script src="chart.js"></script>
 
   <script>
     function createWC() {
@@ -33,6 +38,8 @@
       }).then(function(rawWordList) {
         console.log(rawWordList);
         counterList = getWordCounter(rawWordList.cleanTweetsArr);
+
+
         WordCloud(document.getElementById('my_canvas'), {
           list: counterList
         });
@@ -43,31 +50,26 @@
   </script>
 
   <style>
-  #container{
-    margin-top: 20px;
-    margin-left:30%;
-  }
+    #container {
+      margin-top: 20px;
+      margin-left: 30%;
+    }
 
-  #my_canvas{
+    #my_canvas {}
 
-  }
-
-
-  .card-shadow {
+    .card-shadow {
       border-radius: 7px;
       box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.16), 0 2px 6px 0 rgba(0, 0, 0, 0.12);
-  }
+    }
 
-  .card-shadow:hover {
+    .card-shadow:hover {
       -webkit-transition: color 0.2s ease-out;
       -moz-transition: color 0.2s ease-out;
       -ms-transition: color 0.2s ease-out;
       -o-transition: color 0.2s ease-out;
       transition: color 0.2s ease-out;
       box-shadow: 0 4px 7px 0 rgba(0, 0, 0, 0.16), 0 4px 13px 0 rgba(0, 0, 0, 0.12);
-
-  }
-
+    }
   </style>
 </body>
 
