@@ -9,7 +9,9 @@
   <script src='https://code.jquery.com/jquery-3.1.1.js'></script>
   <script src="https://code.highcharts.com/highcharts.js"></script>
 
-
+  <!-- web font -->
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+  <!-- end of web font -->
 </head>
 
 <body>
@@ -30,12 +32,15 @@
   <script>
     function createWC() {
       var searchTerm = $('#input-search').val();
-      console.log(searchTerm);
 
       $.ajax({
         url: "http://localhost:3000/api/twitter/" + searchTerm,
       }).then(function(rawWordList) {
-        console.log(rawWordList);
+
+        // add search term to stopwords
+        var addStopWords = searchTerm.split(' ').join(',');
+        stopWords += addStopWords;
+
         var counterList = getWordCounter(rawWordList.cleanTweetsArr);
         var sentiList = parsePieData(rawWordList.sentiArr);
 
@@ -44,9 +49,9 @@
 
         WordCloud(document.getElementById('my_canvas'), {
           list: counterList
+          // minSize: 9
+          // fontFamily:'Lato'
         });
-        console.log(counterList);
-        console.log('done');
       });
     }
   </script>

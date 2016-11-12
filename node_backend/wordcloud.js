@@ -28,10 +28,10 @@ function parseTweets(tweets) {
   return tweetArr;
 }
 
-function getSentimentArr(tweetArr){
+function getSentimentArr(tweetArr) {
   var sentiArr = [];
 
-  tweetArr.map(function(tweet){
+  tweetArr.map(function(tweet) {
     var curSenti = sentiment(tweet);
     var tweetSenti = {
       score: curSenti.score,
@@ -57,16 +57,37 @@ app.get('/api/twitter/:key', function(request, respond) {
       var sentiArr = getSentimentArr(cleanTweetsArr);
 
       // update max id to avoid overlap
-      params.max_id = parseInt(tweets.statuses[ tweets.statuses.length - 1 ].id_str) - 1;
+      params.max_id = parseInt(tweets.statuses[tweets.statuses.length - 1].id_str) - 1;
 
       client.get('search/tweets', params, function(error, tweets, response) {
-        if(!error){
-           var curTweetArr = parseTweets(tweets);
-           cleanTweetsArr = cleanTweetsArr.concat(curTweetArr);
-           sentiArr = sentiArr.concat(getSentimentArr(curTweetArr));
-           respond.json({
-             cleanTweetsArr, sentiArr
-           });
+        if (!error) {
+          var curTweetArr = parseTweets(tweets);
+          cleanTweetsArr = cleanTweetsArr.concat(curTweetArr);
+          sentiArr = sentiArr.concat(getSentimentArr(curTweetArr));
+
+          params.max_id = parseInt(tweets.statuses[tweets.statuses.length - 1].id_str) - 1;
+
+          client.get('search/tweets', params, function(error, tweets, response) {
+            if (!error) {
+              curTweetArr = parseTweets(tweets);
+              cleanTweetsArr = cleanTweetsArr.concat(curTweetArr);
+              sentiArr = sentiArr.concat(getSentimentArr(curTweetArr));
+
+              params.max_id = parseInt(tweets.statuses[tweets.statuses.length - 1].id_str) - 1;
+
+              client.get('search/tweets', params, function(error, tweets, response) {
+                if (!error) {
+                  curTweetArr = parseTweets(tweets);
+                  cleanTweetsArr = cleanTweetsArr.concat(curTweetArr);
+                  sentiArr = sentiArr.concat(getSentimentArr(curTweetArr));
+                  respond.json({
+                    cleanTweetsArr,
+                    sentiArr
+                  });
+                }
+              });
+            }
+          });
         }
       });
     } else {

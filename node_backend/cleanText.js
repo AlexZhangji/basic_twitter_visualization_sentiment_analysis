@@ -5,7 +5,6 @@
       get rid of stopwords.
 */
 
-
 function cleanTextArr(line) {
   var res = line.toLowerCase().replace(/\W/g, ' ').trim().split(' ');
   return res;
@@ -49,16 +48,34 @@ function getWordCounter(inList) {
 
 function dictObjArr(dict) {
   var objArr = [];
+  var maxVal = 0;
 
   for (var key in dict) {
     var curItem = [];
+
+    if (maxVal < dict[key]) {
+      maxVal = dict[key];
+    }
 
     curItem.push(key);
     curItem.push(dict[key]);
     objArr.push(curItem);
   }
 
-  return objArr;
+  console.log(maxVal);
+  var scaleIndex = 1;
+  if (maxVal < 800) {
+    var scaleIndex = 800.0 / maxVal;
+  }
+  console.log("scaleIndex: " + scaleIndex );
+  var scaledObjArr = objArr.map(function(item) {
+    var curItem = item;
+    curItem[1] = parseInt(scaleIndex * curItem[1]);
+    return curItem;
+  });
+
+  console.log(scaledObjArr);
+  return scaledObjArr;
 }
 
 var stopWords = "a,able,about,above,abst,accordance,according,accordingly,across,act,actually,added,adj,\
@@ -95,4 +112,4 @@ useful,usefully,usefulness,uses,using,usually,v,value,various,'ve,very,via,viz,v
 welcome,we'll,went,were,weren't,we've,what,whatever,what'll,whats,when,whence,whenever,where,whereafter,whereas,whereby,wherein,\
 wheres,whereupon,wherever,whether,which,while,whim,whither,who,whod,whoever,whole,who'll,whom,whomever,whos,whose,why,widely,\
 willing,wish,with,within,without,won't,words,world,would,wouldn't,www,x,y,yes,yet,you,youd,you'll,your,youre,yours,yourself,\
-yourselves,you've,z,zero,https";
+yourselves,you've,z,zero,https,amp";
