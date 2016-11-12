@@ -8,8 +8,7 @@
   <script src="cleanText.js"></script>
   <script src='https://code.jquery.com/jquery-3.1.1.js'></script>
   <script src="https://code.highcharts.com/highcharts.js"></script>
-  <script src="https://code.highcharts.com/highcharts-more.js"></script>
-  <script src="https://code.highcharts.com/modules/exporting.js"></script>
+
 
 </head>
 
@@ -22,7 +21,7 @@
     <input id="input-search" />
 
     <div id="my_canvas" class="card-shadow" style="width:300px; height:300px; margin-top:20px;"></div>
-    <div id="spider_web" class="card-shadow" style="width:300px; height:300px; margin-top:20px;"></div>
+    <div id="pie_chart" class="card-shadow" style="width:500px; height:500px; margin-top:20px;"></div>
 
   </div>
   <!-- end of container -->
@@ -37,7 +36,10 @@
         url: "http://localhost:3000/api/twitter/" + searchTerm,
       }).then(function(rawWordList) {
         console.log(rawWordList);
-        counterList = getWordCounter(rawWordList.cleanTweetsArr);
+        var counterList = getWordCounter(rawWordList.cleanTweetsArr);
+        var sentiList = parsePieData(rawWordList.sentiArr);
+
+        pieChartInit(sentiList);
 
 
         WordCloud(document.getElementById('my_canvas'), {
