@@ -17,7 +17,7 @@
     </button>
     <input id="input-search" />
 
-    <div id="my_canvas" style="width:700px; height:700px;">
+    <div id="my_canvas" class="card-shadow" style="width:400px; height:400px; margin-top:20px;">
     </div>
 
   </div>
@@ -32,7 +32,7 @@
         url: "http://localhost:3000/api/twitter/" + searchTerm,
       }).then(function(rawWordList) {
         console.log(rawWordList);
-        counterList = getWordCounter(rawWordList.tweets);
+        counterList = getWordCounter(rawWordList.cleanTweetsArr);
         WordCloud(document.getElementById('my_canvas'), {
           list: counterList
         });
@@ -46,6 +46,26 @@
   #container{
     margin-top: 20px;
     margin-left:30%;
+  }
+
+  #my_canvas{
+
+  }
+
+
+  .card-shadow {
+      border-radius: 7px;
+      box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.16), 0 2px 6px 0 rgba(0, 0, 0, 0.12);
+  }
+
+  .card-shadow:hover {
+      -webkit-transition: color 0.2s ease-out;
+      -moz-transition: color 0.2s ease-out;
+      -ms-transition: color 0.2s ease-out;
+      -o-transition: color 0.2s ease-out;
+      transition: color 0.2s ease-out;
+      box-shadow: 0 4px 7px 0 rgba(0, 0, 0, 0.16), 0 4px 13px 0 rgba(0, 0, 0, 0.12);
+
   }
 
   </style>
