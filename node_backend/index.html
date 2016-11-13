@@ -44,7 +44,7 @@
         var counterList = getWordCounter(rawWordList.cleanTweetsArr);
         var sentiList = parsePieData(rawWordList.sentiArr);
 
-        pieChartInit(sentiList);
+        pieChartInit(sentiList, searchTerm);
 
 
         WordCloud(document.getElementById('my_canvas'), {

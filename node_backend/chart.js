@@ -4,23 +4,25 @@
   two separte key and value pairs
   return in sorted order while keep the pair in index
 */
-function sortKeyValArr(keyArr, valArr){
+function sortKeyValArr(keyArr, valArr) {
   // get value from keyArr
-  var numKeyArr = keyArr.map(function(key){
+  var numKeyArr = keyArr.map(function(key) {
     return parseInt(key);
   });
 
   // sort by number in ascending order
-  numKeyArr.sort(function(a, b){return a - b});
+  numKeyArr.sort(function(a, b) {
+    return a - b
+  });
   // console.log(numKeyArr);
 
   var sortedValArr = [];
-  for(var i = 0; i < valArr.length; i++){
+  for (var i = 0; i < valArr.length; i++) {
     var curKeyIndex = keyArr.indexOf(String(numKeyArr[i]));
     sortedValArr.push(valArr[curKeyIndex]);
   }
 
-  var strKeyArr = numKeyArr.map(function(key){
+  var strKeyArr = numKeyArr.map(function(key) {
     return String(key);
   });
 
@@ -29,7 +31,7 @@ function sortKeyValArr(keyArr, valArr){
   return [strKeyArr, sortedValArr];
 }
 
-function parsePieData(rawData){
+function parsePieData(rawData) {
   var pieData = {};
 
   pieData.total = rawData.length;
@@ -55,29 +57,29 @@ function parsePieData(rawData){
   pieData.neturalData.num = 0;
 
 
-  rawData.map(function(rawItem){
+  rawData.map(function(rawItem) {
     var sentiScore = rawItem.score;
 
-    if(sentiScore == 0){
+    if (sentiScore == 0) {
       pieData.neturalData.data[0] += 1;
       pieData.neturalData.num += 1;
-    }else if(sentiScore > 0){
+    } else if (sentiScore > 0) {
       // check if contain the category
       var bContainCate = pieData.posData.cate.indexOf(String(sentiScore));
-      if(bContainCate > -1){
+      if (bContainCate > -1) {
         pieData.posData.data[bContainCate] += 1;
-      }else{
+      } else {
         pieData.posData.cate.push(String(sentiScore));
         pieData.posData.data.push(1);
       }
       pieData.posData.num += 1;
 
-    }else{
+    } else {
       // check if contain the category
       var bContainCate = pieData.negData.cate.indexOf(String(sentiScore));
-      if(bContainCate > -1){
+      if (bContainCate > -1) {
         pieData.negData.data[bContainCate] += 1;
-      }else{
+      } else {
         pieData.negData.cate.push(String(sentiScore));
         pieData.negData.data.push(1);
       }
@@ -99,13 +101,13 @@ function parsePieData(rawData){
   return pieData;
 }
 
-function pieChartInit(pieData) {
+function pieChartInit(pieData, term) {
 
   $(function() {
     var colors = Highcharts.getOptions().colors,
       categories = ['Positive', 'Negative', 'Netural'],
       data = [{
-        y: 100/pieData.total * pieData.posData.num,
+        y: 100 / pieData.total * pieData.posData.num,
         color: colors[0],
         drilldown: {
           name: 'Positive',
@@ -114,7 +116,7 @@ function pieChartInit(pieData) {
           color: colors[0]
         }
       }, {
-        y: 100/pieData.total * pieData.negData.num,
+        y: 100 / pieData.total * pieData.negData.num,
         color: colors[1],
         drilldown: {
           name: 'Negative',
@@ -123,7 +125,7 @@ function pieChartInit(pieData) {
           color: colors[1]
         }
       }, {
-        y: 100/pieData.total * pieData.neturalData.num,
+        y: 100 / pieData.total * pieData.neturalData.num,
         color: colors[2],
         drilldown: {
           name: 'Netural',
@@ -144,10 +146,11 @@ function pieChartInit(pieData) {
     // Build the data arrays
     for (i = 0; i < dataLen; i += 1) {
 
+      var _dataY = parseFloat((data[i].y).toFixed(1));
       // add browser data
       browserData.push({
         name: categories[i],
-        y: data[i].y,
+        y: _dataY,
         color: data[i].color
       });
 
@@ -155,13 +158,17 @@ function pieChartInit(pieData) {
       drillDataLen = data[i].drilldown.data.length;
       for (j = 0; j < drillDataLen; j += 1) {
         brightness = 0.2 - (j / drillDataLen) / 5;
+        var _dataY = parseFloat((100 / pieData.total * data[i].drilldown.data[j]).toFixed(1));
         versionsData.push({
           name: data[i].drilldown.categories[j],
-          y: data[i].drilldown.data[j],
+          y: _dataY,
           color: Highcharts.Color(data[i].color).brighten(brightness).get()
         });
       }
     }
+    console.log(data);
+    console.log(versionsData);
+    console.log(browserData);
 
     // Create the chart
     $('#pie_chart').highcharts({
@@ -169,10 +176,10 @@ function pieChartInit(pieData) {
         type: 'pie'
       },
       title: {
-        text: 'Browser market share, January, 2015 to May, 2015'
+        text: 'Sentiment Analysis For Tweets about ' + term
       },
       subtitle: {
-        text: 'Source: <a href="http://netmarketshare.com/">netmarketshare.com</a>'
+        text: ''
       },
       yAxis: {
         title: {
@@ -189,7 +196,7 @@ function pieChartInit(pieData) {
         valueSuffix: '%'
       },
       series: [{
-        name: 'Browsers',
+        name: 'Sentiment',
         data: browserData,
         size: '60%',
         dataLabels: {
@@ -200,14 +207,14 @@ function pieChartInit(pieData) {
           distance: -30
         }
       }, {
-        name: 'Versions',
+        name: 'Emotion',
         data: versionsData,
         size: '80%',
         innerSize: '60%',
         dataLabels: {
           formatter: function() {
             // display only if larger than 1
-            return this.y > 1 ? '<b>' + this.point.name + ':</b> ' + this.y + '%' : null;
+            return this.y > 1 ? 'Feeling: <b>' + this.point.name + ': </b> ' + this.y + '%' : null;
           }
         }
       }]

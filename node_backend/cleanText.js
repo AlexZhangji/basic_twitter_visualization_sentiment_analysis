@@ -62,6 +62,7 @@ function dictObjArr(dict) {
     objArr.push(curItem);
   }
 
+// scale words font size
   console.log(maxVal);
   var scaleIndex = 1;
   if (maxVal < 800) {
