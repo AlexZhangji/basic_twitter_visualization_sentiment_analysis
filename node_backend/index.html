@@ -20,9 +20,7 @@
 <body>
   <div id="container">
 
-    <button onclick="createWC();">
-      search
-    </button>
+    <button id='search-btn' type="button" onclick="createWC();">search</button>
     <input id="input-search" />
 
     <div class="sk-folding-cube" id="spiner-overlay">
@@ -43,6 +41,7 @@
 
   <script>
     $(function() {
+      // add spiner when loading ajax
       $('#spiner-overlay').hide();
 
       $(document).ajaxStart(function() {
@@ -53,7 +52,17 @@
         $('#spiner-overlay').hide(); // hide loading indicator
       });
 
+      //  enable enter key to search
+      $("#input-search").keypress(function(e) {
+        if ((e.which && e.which == 13) || (e.keyCode && e.keyCode == 13)) {
+          createWC();
+          return false;
+        } else {
+          return true;
+        }
+      });
     })
+
 
     function createWC() {
       var searchTerm = $('#input-search').val();
