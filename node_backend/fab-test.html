@@ -10,7 +10,9 @@
   <a href="#" tooltip="Xavier" class="buttons"></a>
   <a href="#" tooltip="James" class="buttons"></a>
   <a href="#" tooltip="Reminders" class="buttons"></a>
-  <a href="#" tooltip="Invite to Inbox" class="buttons"></a><a href="#" tooltip="Compose" class="buttons"><span><span class="rotate"></span></span></a></nav>
+  <a href="#" tooltip="Invite to Inbox" class="buttons"></a>
+  <a href="#" tooltip="Compose" class="buttons"><span><span class="rotate"></span></span></a>
+</nav>
 
 <style>
   body {
@@ -45,21 +47,21 @@
     font: 300 18px Roboto;
   }
 
-  .container {
+  .fab-container {
     margin: 1em;
     position: fixed;
     bottom: 0;
     right: 0;
   }
 
-  .container:hover .buttons:not(:last-of-type) {
+  .fab-container:hover .buttons:not(:last-of-type) {
     width: 40px;
     height: 40px;
     margin: 15px auto 0;
     opacity: 1;
   }
 
-  .container:hover .rotate {
+  .fab-container:hover .rotate {
     background-image: url("http://goo.gl/0eJslQ");
     transform: rotate(0deg);
   }
