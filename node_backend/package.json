@@ -9,6 +9,7 @@
     "q": "^1.4.1",
     "sentiment": "^2.1.0",
     "sequelize": "^3.9.0",
+    "twitter": "^1.4.0",
     "validatorjs": "^3.7.0"
   },
   "engines": {

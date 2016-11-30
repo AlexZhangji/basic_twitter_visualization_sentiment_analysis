@@ -18,3 +18,4 @@ testem.log
 
 /node_backend/node_modules
 /node_backend/.env
+/node_backend/node_modules/
