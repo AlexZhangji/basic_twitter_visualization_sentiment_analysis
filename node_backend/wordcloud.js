@@ -16,7 +16,7 @@ var client = new Twitter({
   consumer_key: process.env.consumer_key,
   consumer_secret: process.env.consumer_secret,
   access_token_key: process.env.access_token_key,
-  access_token_secret: process.env.access_token_secret
+  access_token_secret: process.env.access_token_secret,
 });
 
 
@@ -25,8 +25,8 @@ var resultTweet = [];
 function parseTweets(tweets) {
   var tweetArr = [];
 
-  tweets.statuses.map(function(tweet) {
-    tweetArr.push(tweet.text);
+tweetArr = tweets.statuses.map(function(tweet) {
+    return tweet.text;
   });
   return tweetArr;
 }
@@ -51,7 +51,7 @@ app.get('/api/twitter/:key', function(request, respond) {
   // get the key term from api call
   var params = {
     q: request.params.key,
-    count: 100
+    count: 20
   };
 
   client.get('search/tweets', params, function(error, tweets, response) {
