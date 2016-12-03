@@ -7,6 +7,9 @@
 # dependencies
 /node_modules
 /bower_components
+/node_backend/node_modules/*
+/node_backend/node_modules
+
 
 # misc
 /.sass-cache
@@ -18,4 +21,3 @@ testem.log
 
 /node_backend/node_modules
 /node_backend/.env
-/node_backend/node_modules/
