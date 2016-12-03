@@ -103,7 +103,7 @@ function parsePieData(rawData) {
 
 function pieChartInit(pieData, term) {
 
-  $(function() {
+  Ember.$(function() {
     var colors = Highcharts.getOptions().colors,
       categories = ['Positive', 'Negative', 'Netural'],
       data = [{
@@ -166,14 +166,17 @@ function pieChartInit(pieData, term) {
         });
       }
     }
+    console.log('chart.js get called');
     console.log(data);
     console.log(versionsData);
     console.log(browserData);
 
     // Create the chart
-    $('#pie_chart').highcharts({
+
+    var chart = new Highcharts.Chart({
       chart: {
-        type: 'pie'
+        type: 'pie',
+        renderTo:'pie_chart'
       },
       title: {
         text: 'Sentiment Analysis For Tweets about ' + term

@@ -9,7 +9,7 @@ export default Ember.Controller.extend({
       // var searchTerm = this.get('input-search');
       console.log('searchTerm' + searchTerm);
       Ember.$.ajax({
-        url: "http://localhost:3000/api/twitter/" + searchTerm,
+        url: "http://45.55.213.242:3000/api/twitter/" + searchTerm,
       }).then(function(rawWordList) {
 
         // add search term to stopwords
