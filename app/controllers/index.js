@@ -21,8 +21,7 @@ export default Ember.Controller.extend({
 
         pieChartInit(sentiList, searchTerm);
 
-
-      new WordCloud(document.getElementById('my_canvas'), {
+        new WordCloud(document.getElementById('my_canvas'), {
           list: counterList
             // minSize: 9
             // fontFamily:'Lato'
