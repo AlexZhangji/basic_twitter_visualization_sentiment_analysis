@@ -32,20 +32,22 @@ export default Ember.Route.extend({
 
     afterModel: function() {
     // add spiner when loading ajax
-    Ember.$('#spiner-overlay').hide();
+    // Ember.$('#spiner-overlay').css('visibility','hidden');
 
     Ember.$(document).ajaxStart(function() {
-      $('#spiner-overlay').show(); // show loading indicator
+      console.log('ajax started');
+      Ember.$('#spiner-overlay').css('display','block');
     });
 
     Ember.$(document).ajaxStop(function() {
-      $('#spiner-overlay').hide(); // hide loading indicator
+      Ember.$('#spiner-overlay').css('display','none');
     });
 
     //  enable enter key to search
     Ember.$("#input-search").keypress(function(e) {
       if ((e.which && e.which === 13) || (e.keyCode && e.keyCode === 13)) {
         createWC();
+        console.log('key pressed.');
         return false;
       } else {
         return true;

@@ -16,8 +16,15 @@
 
 <div id="container">
 
-  <button id='search-btn' type="button"  onclick={{action 'createWC'}} >search</button>
-  <input id="input-search"  />
+  <form style="margin-left:30px;">
+    <input id="input-search" placeholder="Search Term" type="text" required="" style="width:800px;">
+    <button id='search-btn' onclick={{action 'createWC'}} style="width:300px; margin-left:250px;font-size:20px;" >Search</button>
+  </form>
+
+
+
+  {{!-- <button id='search-btn' type="button"  onclick={{action 'createWC'}} >search</button> --}}
+  {{!-- <input id="input-search"  /> --}}
 
   <div class="sk-folding-cube" id="spiner-overlay">
     <div class="sk-cube1 sk-cube"></div>
@@ -40,6 +47,10 @@
     margin-left: 20%;
   }
 
+  #spiner-overlay{
+    display: none;
+  }
+
   #my_canvas {}
 
   .card-shadow {
@@ -56,4 +67,115 @@
     transition: color 0.2s ease-out;
     box-shadow: 0 4px 7px 0 rgba(0, 0, 0, 0.16), 0 4px 13px 0 rgba(0, 0, 0, 0.12);
   }
+
+  /* for input css */
+  h1, input::-webkit-input-placeholder, button {
+  font-family: 'roboto', sans-serif;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+h1 {
+  height: 100px;
+  width: 100%;
+  font-size: 18px;
+  background: #18aa8d;
+  color: white;
+  line-height: 150%;
+  border-radius: 3px 3px 0 0;
+  box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.2);
+}
+
+/*form {
+  box-sizing: border-box;
+  width: 260px;
+  margin: 100px auto 0;
+  box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.2);
+  padding-bottom: 40px;
+  border-radius: 3px;
+}*/
+form h1 {
+  box-sizing: border-box;
+  padding: 20px;
+}
+
+input {
+  font-size: 16px;
+  font-family: 'Roboto Slab', serif;
+  margin: 40px 25px;
+  width: 800px;
+  display: block;
+  border: none;
+  padding: 10px 0;
+  border-bottom: solid 1px #2196F3;
+  -webkit-transition: all 0.3s cubic-bezier(0.64, 0.09, 0.08, 1);
+  transition: all 0.3s cubic-bezier(0.64, 0.09, 0.08, 1);
+  background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0) 96%, #2196F3 4%);
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 96%, #2196F3 4%);
+  background-position: -200px 0;
+  background-size: 1200px 100%;
+  background-repeat: no-repeat;
+  color: #42A5F5;
+}
+input:focus, input:valid {
+  box-shadow: none;
+  outline: none;
+  background-position: 0 0;
+}
+input:focus::-webkit-input-placeholder, input:valid::-webkit-input-placeholder {
+  color: #2196F3;
+  font-size: 18px;
+  -webkit-transform: translateY(-20px);
+          transform: translateY(-20px);
+  visibility: visible !important;
+}
+
+button {
+  border: none;
+  background: #2196F3;
+  cursor: pointer;
+  border-radius: 3px;
+  padding: 6px;
+  width: 200px;
+  color: white;
+  margin-left: 25px;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);
+}
+button:hover {
+  -webkit-transform: translateY(-3px);
+          transform: translateY(-3px);
+  box-shadow: 0 6px 6px 0 rgba(0, 0, 0, 0.2);
+}
+
+.follow {
+  width: 42px;
+  height: 42px;
+  border-radius: 50px;
+  background: #03A9F4;
+  display: inline-block;
+  margin: 50px calc(50% - 21px);
+  white-space: nowrap;
+  padding: 13px;
+  box-sizing: border-box;
+  color: white;
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+  font-family: Roboto, sans-serif;
+  text-decoration: none;
+  box-shadow: 0 5px 6px 0 rgba(0, 0, 0, 0.2);
+}
+.follow i {
+  margin-right: 20px;
+  -webkit-transition: margin-right 0.2s ease;
+  transition: margin-right 0.2s ease;
+}
+.follow:hover {
+  width: 200px;
+  -webkit-transform: translateX(-250px);
+          transform: translateX(-250px);
+}
+.follow:hover i {
+  margin-right: 10px;
+}
+
 </style>
