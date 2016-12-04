@@ -10,7 +10,7 @@ This is the final project for ITP 404 class.
 ![enter image description here](http://i.imgur.com/IMnG5XP.png)
 
 ![enter image description here](http://i.imgur.com/3nVjPwh.png)
-###About
+###API End Points 
   -      [/api/twitter/:key](http://45.55.213.242:3000/api/twitter/trump) - return list of related tweets and sentiment score for a given keyword.
   - [/api/twitter-user/:key](http://45.55.213.242:3000/api/twitter-user/trump) - Return list of users that have post tweets about given keyword.
   -    [/api/twitter-loc/:key](http://45.55.213.242:3000/api/twitter-loc/trump) - return list of places that tweet about given keyword is located. (could be very few.)
