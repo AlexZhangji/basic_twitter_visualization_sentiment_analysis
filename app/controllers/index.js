@@ -8,10 +8,11 @@ export default Ember.Controller.extend({
       var searchTerm = Ember.$('#input-search').val();
       // var searchTerm = this.get('input-search');
       console.log('searchTerm' + searchTerm);
-      Ember.$.ajax({
+      var promise = Ember.$.ajax({
         url: "http://45.55.213.242:3000/api/twitter/" + searchTerm,
-      }).then(function(rawWordList) {
+      })
 
+      promise.then(function(rawWordList) {
         // add search term to stopwords
         var addStopWords = searchTerm.split(' ').join(',');
         stopWords += addStopWords;
