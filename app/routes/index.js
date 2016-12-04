@@ -2,30 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
   model: function() {
-
-    // add spiner when loading ajax
-    Ember.$('#spiner-overlay').hide();
-
-    Ember.$(document).ajaxStart(function() {
-      $('#spiner-overlay').show(); // show loading indicator
-    });
-
-    Ember.$(document).ajaxStop(function() {
-      $('#spiner-overlay').hide(); // hide loading indicator
-    });
-
-    //  enable enter key to search
-    Ember.$("#input-search").keypress(function(e) {
-      if ((e.which && e.which === 13) || (e.keyCode && e.keyCode === 13)) {
-        createWC();
-        return false;
-      } else {
-        return true;
-      }
-    });
-
-
-    function createWC(){
+    function createWC() {
       e.preventDefault();
       // var searchTerm = $('#input-search').val();
       var searchTerm = this.get('input-search');
@@ -51,6 +28,30 @@ export default Ember.Route.extend({
         });
       });
     }
+  },
 
+    afterModel: function() {
+    // add spiner when loading ajax
+    Ember.$('#spiner-overlay').hide();
+
+    Ember.$(document).ajaxStart(function() {
+      $('#spiner-overlay').show(); // show loading indicator
+    });
+
+    Ember.$(document).ajaxStop(function() {
+      $('#spiner-overlay').hide(); // hide loading indicator
+    });
+
+    //  enable enter key to search
+    Ember.$("#input-search").keypress(function(e) {
+      if ((e.which && e.which === 13) || (e.keyCode && e.keyCode === 13)) {
+        createWC();
+        return false;
+      } else {
+        return true;
+      }
+    });
   }
+
+
 });

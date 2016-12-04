@@ -17,7 +17,7 @@
 <div id="container">
 
   <button id='search-btn' type="button"  onclick={{action 'createWC'}} >search</button>
-  <input id="input-search" value='input-search' />
+  <input id="input-search"  />
 
   <div class="sk-folding-cube" id="spiner-overlay">
     <div class="sk-cube1 sk-cube"></div>
@@ -26,10 +26,10 @@
     <div class="sk-cube3 sk-cube"></div>
   </div>
 
-  <div id="my_canvas" class="card-shadow" style="width:500px; height:500px; margin-top:20px;">
+  <div id="my_canvas" class="card-shadow" style="width:900px; height:500px; margin-top:20px;">
 
   </div>
-  <div id="pie_chart" class="card-shadow" style="width:500px; height:500px; margin-top:20px;"></div>
+  <div id="pie_chart" class="card-shadow" style="width:900px; height:500px; margin-top:20px;"></div>
 
 </div>
 <!-- end of container -->
@@ -37,7 +37,7 @@
 <style>
   #container {
     margin-top: 20px;
-    margin-left: 30%;
+    margin-left: 20%;
   }
 
   #my_canvas {}
@@ -45,6 +45,7 @@
   .card-shadow {
     border-radius: 7px;
     box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.16), 0 2px 6px 0 rgba(0, 0, 0, 0.12);
+    background-color: #FFF;
   }
 
   .card-shadow:hover {

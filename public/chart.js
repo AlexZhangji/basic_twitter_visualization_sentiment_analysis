@@ -217,7 +217,7 @@ function pieChartInit(pieData, term) {
         dataLabels: {
           formatter: function() {
             // display only if larger than 1
-            return this.y > 1 ? 'Feeling: <b>' + this.point.name + ': </b> ' + this.y + '%' : null;
+            return this.y > 1 ? 'Emotion <b>' + this.point.name + ': </b> ' + this.y + '%' : null;
           }
         }
       }]
