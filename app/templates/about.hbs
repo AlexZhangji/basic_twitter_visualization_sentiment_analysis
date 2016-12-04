@@ -1,56 +1,126 @@
 {{outlet}}
 <ul class="header card-shadow">
   {{#link-to "index" }}
-  <li>Home</li>
+    <li>Home</li>
   {{/link-to}}
 
   {{#link-to "contact" }}
-  <li>Contact</li>
+    <li>Contact</li>
   {{/link-to}}
 
   {{#link-to "about" }}
-  <li>About</li>
+    <li>About</li>
   {{/link-to}}
 </ul>
-<br style="clear:both;"/>
+<br style="clear:both;" />
 
+<div class="container card-shadow" style="margin-left:15%; background-color:white;">
 
-<h1>
-  This is the final project for ITP 404 class. (work in progress)
+  <h1>
+  A Basic Tweeter Data Visualization and Sentiment Analysis
 </h1>
 
-<h2>About</h2>
-<div>
-  <li>
-    Given a sub reddit name and a certain word .
-  </li>
-  <li>
-    Output a basic word cloud visualization and emotion analysis.
-  </li>
-
-</div>
-
-<h2>This is done by:</h2>
-<div>
+  <h2>About</h2>
+  <div>
     <li>
-      Using Reddit API to get data for given subReddit.
+      Given a keyword, get and parse related tweets. (extract useful info, clean stopwords).
     </li>
     <li>
-      Extract info when it contains given word in the sub.
+      Output a wordcloud and sentiment analysis visualization based on it.
     </li>
+
+  </div>
+
+  <h2>API EndPoints</h2>
+  <div>
     <li>
-      Integrate word cloud and emotion analysis with external libraries.
+      <a href="http://45.55.213.242:3000/api/twitter/trump">/api/twitter/:key</a> - return list of related tweets and sentiment score for a given keyword.
     </li>
+
+    <li>
+      <a href="http://45.55.213.242:3000/api/twitter-user/trump">/api/twitter-user/:key</a> - return list of users that have post tweets about given keyword.
+    </li>
+
+    <li>
+      <a href="http://45.55.213.242:3000/api/twitter-loc/trump">/api/twitter-loc/:key</a> - return list of places that tweet about given keyword is located (could be very few.).
+    </li>
+
+  </div>
+
+  <h2>This project uses a number of open source projects to work properly:</h2>
+
+  <div>
+    <li>
+    <span class="about-link">  Sentiment</span> - AFINN-based sentiment analysis for Node.js.
+    </li>
+
+    <li>
+      <span class="about-link">Twitter</span> - A Twitter API Wrapper for Node.js.
+    </li>
+
+    <li>
+    <span class="about-link">  WordCloud2</span> - JS based libary to generate WordCloud from list of words and frequence.
+    </li>
+
+    <li>
+      <span class="about-link">Highcharts</span> - Create interactive charts easily for web projects.
+    </li>
+
+
+  </div>
+
+  <h2>Misc.</h2>
+
+  <div>
+    <li>
+      <span class="about-link">List of Stop words</span> - Parse and clean the selected words.(get rid of likes of 'the', 'of', 'I' and tec.)
+    </li>
+
+    <li>
+      <span class="about-link">Google Material Design</span> - Loosely based on Google's material design principle.
+    </li>
+
+    <li>
+      <span class="about-link">Spiner</span> - Customized css, triggers animation when making the Ajax call.
+    </li>
+
+
+  </div>
 </div>
 
-<h2>Libraries</h2>
 
-<div>
-  <li>
-    sentiment - AFINN-based sentiment analysis for Node.js.
-  </li>
+<style>
+  body {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
 
-  <li>
-    d3-cloud - Create word clouds in JavaScript.
-  </li>
-</div>
+  }
+
+  .about-link{
+    font-weight: bold;
+  }
+
+  .container{
+    width: 70%;
+    padding: 30px;
+
+  }
+
+  h1 h2 {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+  }
+
+  .link-a:hover {
+    background-color: none;
+  }
+
+  a:hover{
+    background-color: none;
+    color: #42A5F5;
+  }
+
+  a.link-a:hover {
+    background-color: none;
+  }
+</style>

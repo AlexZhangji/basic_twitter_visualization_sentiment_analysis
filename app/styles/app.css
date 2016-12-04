@@ -2,7 +2,26 @@ body {
     font-weight: 400;
     background-color: #f4f4f4;
     font-family: 'Open Sans', sans-serif;
+    font-size: 17px;
+    color: #616161;
+
 }
+
+.card-shadow {
+  border-radius: 7px;
+  box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.16), 0 2px 6px 0 rgba(0, 0, 0, 0.12);
+  background-color: #FFF;
+}
+
+.card-shadow:hover {
+  -webkit-transition: color 0.2s ease-out;
+  -moz-transition: color 0.2s ease-out;
+  -ms-transition: color 0.2s ease-out;
+  -o-transition: color 0.2s ease-out;
+  transition: color 0.2s ease-out;
+  box-shadow: 0 4px 7px 0 rgba(0, 0, 0, 0.16), 0 4px 13px 0 rgba(0, 0, 0, 0.12);
+}
+
 
 /* card */
 .card-shadow {
@@ -80,7 +99,7 @@ ul.header{
 
 }
 
-a:hover{
+.header a:hover{
 
     background-color: #326dbb;
 }

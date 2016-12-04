@@ -66,7 +66,7 @@ app.get('/api/twitter/:key', function(request, respond) {
   // get the key term from api call
   var params = {
     q: request.params.key,
-    count: 20
+    count: 100
   };
 
   client.get('search/tweets', params, function(error, tweets, response) {
@@ -119,7 +119,7 @@ app.get('/api/twitter-loc/:key', function(request, respond) {
   // get the key term from api call
   var params = {
     q: request.params.key,
-    count: 77
+    count: 100
   };
 
   client.get('search/tweets', params, function(error, tweets, response) {
