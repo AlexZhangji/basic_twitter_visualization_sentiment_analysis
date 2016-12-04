@@ -22,45 +22,6 @@ var client = new Twitter({
 
 var resultTweet = [];
 
-function parseLoc(tweets) {
-  var tweetLocArr = [];
-  tweets.statuses.forEach(function(tweet) {
-    if (tweet.place !== null) {
-      // console.log(tweet.place.name);
-      var curLoc = tweet.place.name;
-      if (curLoc !== null) {
-        tweetLocArr.push(curLoc);
-      }
-    }
-  });
-
-  return tweetLocArr;
-}
-
-function parseTweets(tweets) {
-  var tweetArr = [];
-
-  tweetArr = tweets.statuses.map(function(tweet) {
-    return tweet.text;
-  });
-  return tweetArr;
-}
-
-function getSentimentArr(tweetArr) {
-  var sentiArr = [];
-
-  tweetArr.map(function(tweet) {
-    var curSenti = sentiment(tweet);
-    var tweetSenti = {
-      score: curSenti.score,
-      comparative: curSenti.comparative
-    };
-
-    sentiArr.push(tweetSenti);
-  });
-
-  return sentiArr;
-}
 
 app.get('/api/twitter/:key', function(request, respond) {
   // get the key term from api call
@@ -164,6 +125,47 @@ app.get('/api/twitter-user/:key', function(request, respond) {
   // end of client get
 });
 
+
+// helper functions
+function parseLoc(tweets) {
+  var tweetLocArr = [];
+  tweets.statuses.forEach(function(tweet) {
+    if (tweet.place !== null) {
+      // console.log(tweet.place.name);
+      var curLoc = tweet.place.name;
+      if (curLoc !== null) {
+        tweetLocArr.push(curLoc);
+      }
+    }
+  });
+
+  return tweetLocArr;
+}
+
+function parseTweets(tweets) {
+  var tweetArr = [];
+
+  tweetArr = tweets.statuses.map(function(tweet) {
+    return tweet.text;
+  });
+  return tweetArr;
+}
+
+function getSentimentArr(tweetArr) {
+  var sentiArr = [];
+
+  tweetArr.map(function(tweet) {
+    var curSenti = sentiment(tweet);
+    var tweetSenti = {
+      score: curSenti.score,
+      comparative: curSenti.comparative
+    };
+
+    sentiArr.push(tweetSenti);
+  });
+
+  return sentiArr;
+}
 
 
 app.listen(3000);
