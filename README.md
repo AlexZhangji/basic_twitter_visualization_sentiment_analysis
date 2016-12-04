@@ -1,23 +1,35 @@
-# Reddit Data Visualization/Analysis
+# Basic Twitter Data Visualization and Sentiment Analysis
 
-This is the final project for ITP 404 class.  (work in progress)
+This is the final project for ITP 404 class.
 
 ###About
-  - Given a sub reddit name and a certain word .
-  - Output a basic word cloud visualization and emotion analysis. 
+  -       Given a keyword, get and parse related tweets. (extract useful info, clean stopwords).
+  - Output a wordcloud and a sentiment analysis visualization based on it.
 <br>
 
-This is done by:
+![enter image description here](http://i.imgur.com/IMnG5XP.png)
 
- 1. Using Reddit API to get data for given subReddit.
- 2. Extract info when it contains given word in the sub.
- 3. Integrate word cloud and emotion analysis with external libraries.
+![enter image description here](http://i.imgur.com/3nVjPwh.png)
+###About
+  -      [/api/twitter/:key](http://45.55.213.242:3000/api/twitter/trump) - return list of related tweets and sentiment score for a given keyword.
+  - [/api/twitter-user/:key](http://45.55.213.242:3000/api/twitter-user/trump) - Return list of users that have post tweets about given keyword.
+  -    [/api/twitter-loc/:key](http://45.55.213.242:3000/api/twitter-loc/trump) - return list of places that tweet about given keyword is located. (could be very few.)
+<br>
+
 
 
 ### Libraries
 
 * [sentiment] - AFINN-based sentiment analysis for Node.js.
-* [d3-cloud]  - Create word clouds in JavaScript.
+* [wordCloud2]  - JS based library to generate WordCloud from list of words and frequency.
+* [Highcharts] -  Create interactive charts easily for web projects.
+* [Twitter] -   A Twitter API Wrapper for Node.js.
+
+### Misc.
+
+* **List of Stop words** - Parse and clean the selected words.(get rid of likes of 'the', 'of', 'I' and etc.).
+* **Google Material Design**  - Loosely based on Google's material design principle.
+* **Spiner** -  Customized css, triggers animation when making the Ajax call.
 
 
 
@@ -29,4 +41,6 @@ MIT
 [//]: # (These are reference links used in the body of this note and get stripped out when the markdown processor does its job. There is no need to format nicely because it shouldn't be seen. Thanks SO - http://stackoverflow.com/questions/4823468/store-comments-in-markdown-syntax)
 
    [sentiment]: <https://github.com/thisandagain/sentiment>
-   [d3-cloud]: <https://github.com/jasondavies/d3-cloud>
+   [Twitter]: <https://www.npmjs.com/package/twitter>
+[Highcharts]: <http://www.highcharts.com/>
+[wordCloud2]: <https://github.com/timdream/wordcloud2.js/>
