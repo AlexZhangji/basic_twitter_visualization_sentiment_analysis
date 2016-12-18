@@ -1,6 +1,7 @@
 # Basic Twitter Data Visualization and Sentiment Analysis
 
 This is the final project for ITP 404 class.
+Made with NodeJS and EmberJS.
 
 ###About
   -       Given a keyword, get and parse related tweets. (extract useful info, clean stopwords).
